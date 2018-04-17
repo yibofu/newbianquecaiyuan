@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>平台消息管理</title>
+		<link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/zui.uploader.css">
+		<script src="/Public/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/prettify.js"></script>
+		<script type="text/javascript" src="/Public/Admin/js/zui.min.js"></script>
+		<script type="text/javascript" src="/Public/Admin/js/zui.uploader.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="panel">
+				<div class="panel-heading">
+					<h2 class="title">添加消息</h2>
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" style="margin: 50px 0;">
+					  <div class="form-group">
+					    <label for="Input1" class="col-sm-2">消息标题</label>
+					    <div class="col-md-6 col-sm-10">
+					      <input class="form-control" required name="title" id="Input1" placeholder="消息标题">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="Input3" class="col-sm-2">消息内容</label>
+					    <div class="col-md-6 col-sm-10">
+					    	<textarea class="form-control" rows="3" name="content" placeholder="消息内容"></textarea>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button name="sub" type="button" class="btn btn-primary">确认提交</button>
+							<a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+					    </div>
+					  </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	$("button[name='sub']").bind('click',function(){
+		var title = $("input[name='title']").val();
+		var content = $("textarea[name='content']").val();
+		if(title !== '' && content !== ''){
+				$("button").attr("disabled",true);
+				$("button").attr("type","button");
+		}
+		$.ajax({
+			type:'post',
+			url:"{:U('Notice/addlist')}",
+			data:{"title":title,"content":content},
+			success:function(data){
+				var data = eval("("+data+")");
+				if(data.error == true){
+					new $.zui.Messager('提示消息：成功', {
+					type:'success',
+					placement: 'bottom-right' // 定义显示位置
+					}).show();
+					setTimeout(function(){
+						window.location.href = "{:U('Notice/index')}";
+					},1500);
+				}else{
+					new $.zui.Messager('提示消息：失败', {
+					type:'danger',
+					placement: 'bottom-right' // 定义显示位置
+					}).show();
+				}
+			}
+		})
+	})
+	</script>
+</html>

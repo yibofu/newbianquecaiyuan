@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>点赞管理</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/mycss.css" />
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css" />
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-body">
+        <table class="table table-fixed table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>点赞人</th>
+                <th>被点赞人</th>
+                <th>点赞数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.uname}</td>
+                    <td>{$vo.pname}</td>
+                    <td>{$vo.good_num}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    function searcha(){
+        var url = '__ACTION__';
+        var query  = $('#search-form').find('.search').serialize();
+
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+
+    $(".form-date").datetimepicker(
+        {
+            language:  "zh-CN",
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: "yyyy-mm-dd"
+        });
+
+    function confirmDel(id,todo){
+        alert(111);
+        (new $.zui.ModalTrigger({size:'sm',title:'确认删除',
+            custom: '<div style="line-height:32px">确定继续删除？<div class="btn-group pull-right"><button type="button" class="btn" data-dismiss="modal">取消</button><button type="button" class="btn btn-danger" data-dismiss="modal" onclick="'+todo+'('+id+')">删除</button></div></div>'
+        })).show();
+    }
+</script>
+</html>

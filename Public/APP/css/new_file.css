@@ -1,0 +1,106 @@
+*{padding: 0;margin: 0;font-family: "微软雅黑";}
+a{text-decoration: none;}
+ul{overflow: hidden;list-style-type: none;}
+@font-face {
+	font-family:"fontCooper";
+	src: url(../Fonts/CooperBlackStd.otf);
+}
+ul li{float: left;}
+.contentCenter{width: 12rem;margin: 0 auto;overflow: hidden;padding: 0 0 0.2rem 0;}
+.contantCenterOther{width: 12rem;margin: 0 auto;padding: 0 0 0.2rem 0;position:  relative;}
+header,.commont,footer{width: 100%;overflow: hidden;}
+.partTil{width: 100%;margin: 0.5rem 0  0.5rem 0;text-align: center;}
+.partTil h2{font-size: 0.32rem;color: #333333;font-weight: normal;}
+.partTil p{color: #444444; font-size: 0.13rem;font-family: arial;letter-spacing: 0.03rem;}
+.partTil hr{border: 2px #ffb332 solid;width: 0.5rem;margin:0.3rem  auto 0;}
+.partOne{width: 100%;position: relative;/* padding: 0.2rem 0; */}
+
+
+header{height:0.6rem;/* padding:0 0.1rem; */background: black;}
+header .contentCenter{padding: 0 0.7rem;}
+header .imgLogo,header .headerTil{float: left;height: 0.6rem;/* width: 1.5rem; */}
+.headerTil{width: 9.6rem;height: 100%;}
+.headerTil li{float: left;width: 1.6rem;line-height: 0.6rem;text-align: center;}
+.headerTil li a{ font-size: 0.16rem;color: #FFFFFF;}
+.headerTil li a:hover{color: #ffb332;}
+
+
+.banner img{display: block;width: 100%;}
+.partOnelef{float: left;}
+.partOnerig{float: right;margin-right: 0.1rem;}
+.partOnelef,.partOnerig{width: 5.65rem;height: 4rem;border-radius: 0.1rem;border: 1px #e4e4e4 solid;box-shadow:  5px 5px 10px #e4e4e4;overflow: hidden;margin-top: 0.8rem;/* position: relative; *//* top: -1.5rem; */}
+.partOnelefTop,.partOnerigTop{background: #f0f0f0;height: 2rem;}
+.partOnelefTop img,.partOnerigTop img{position: absolute;display: block;top: 1.65rem;}
+.partOneTilTex{font-size: 0.18rem;color: #606060;line-height: 0.35rem;}
+.partOneTexTex{font-size:0.16rem;color: #777777;}
+.lineH{line-height: 0.3rem;}
+.partOneBot{padding: 0.3rem 0.2rem 0 0.6rem;}
+.partOnerigBot>p{text-indent: 0.7rem;}
+.partOneBot>a{float: right;}
+/*遮罩*/
+.partFade{display: none; width: 5.65rem;height: 4rem;position: absolute;top: 2.212rem;background: rgba(96,96,105,0.95);/* margin-top: 0.8rem; */border-radius: 0.1rem;}
+.partFade p{padding: 0 0 0 1.6rem;width: 55%;}
+.partFadeP{font-size: 0.16rem;color: #FFFFFF;line-height: 0.25rem;}
+.partFadeT{font-size: 0.32rem;font-weight: bold;color: #FFFFFF;line-height: 1rem;text-align: center;padding: 0!important;width: 100%!important;}
+.fontFadeClo{color: #ffb332;font-size: 0.18rem;line-height: 0.4rem;}
+
+.partTwofade{left: 51.3%;}
+
+.partTwo table{width: 100%;border-collapse: collapse;}
+.partTwo table tr td,.partTwo table th td{ border: 1px #dadada solid;text-align: center;height: 0.54rem;}
+.partTwoTex table thead{color: #ffffff;background: #ff8f02;font-size: 0.24rem;}
+.partTwo .rowSpan{color: white;background: #ff8f02;font-size: 0.24rem;position: relative;cursor: pointer;}
+.partTwo .rowSpan img{position: absolute;bottom: 0;right: 0;}
+.partTwo td p{word-spacing: 0.05rem;width: 60%;text-align: left; margin: 0 auto;overflow: hidden;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
+.partTwo td a{border-radius: 0.05rem; display: block;background:#0096ff;color: #FFFFFF;font-size: 0.16rem;width: 1rem;height: 0.3rem;line-height:  0.3rem;margin:  0 auto;}
+
+.partTreeTex{background: url(../img/partThreeBg.png) no-repeat;background-size: 100% 100%;}
+.partThree{overflow: hidden;}
+.partTreeTe1Se{width: 100%;float: left;margin: 0.3rem 0;}
+.partTreeTe1Se img{display: block;}
+.partThreeTe2{height: 6.1rem;width: 100%; margin: 0.2rem 0 0 0;}
+.partThreeTe2Lef{float: left;width: 5rem;height: 4.70rem;margin: 0.65rem 0 0 0;}
+.partThreeTe2Rig{float: right;width: 7rem;}
+.partThreeTe2Rig>img{float: left;margin-top:  0.2rem;}
+.partThreeTe2Rig .partThreeTe2RigTex{float: left;}
+.partThreeTe2RigTex{position: relative;left: 0.5rem;width: 5rem;padding: 0.7rem 0 0 0;}
+.partThreeTe2RigTex>div{margin: 0.38rem 0;}
+.partThreeAT{font-size: 0.2rem;color: #ffb332;font-weight: bold;}
+.partThreeT{font-size: 0.17rem;color: #ffb332;font-weight: bold;line-height: 0.4rem;}
+.partThreeTT{font-size: 0.16rem;color: #ffffff;}
+
+.partFourTe{overflow: hidden;width: 100%;margin: 0.5rem 0 0 0;}
+.partFourTeBlock{float: left;width: 6rem;height: 3.7rem;margin:0.1rem 0;}
+.partFourTeBlock:nth-of-type(even){background: url(../img/partFourCaseBor1.png) no-repeat;background-size: 97%;}
+.partFourTeBlock:nth-of-type(odd){background: url(../img/partFourCaseBor.png) no-repeat;background-size: 100%;}
+.partFourTeBlockTitle{position: relative;left: 33%;top: -0.1rem;width: 1.8rem;text-align: center;font-size:  0.2rem;font-weight: bold;}
+.partFourTeBlockText img{display: block;position: relative;top: 0.1rem;left: 41%;}
+.partFourTeBlockText p{width: 4.5rem;margin: 0.3rem 0 0 0.8rem;color: #282828;font-size: 0.18rem;line-height: 0.3rem;}
+.partFourTeBlockText button{background: transparent;border-radius: 5px;position:relative;top: 0.2rem;left: 39%;border: 1px  solid #ffb332;width:1.25rem;height:0.3rem;line-height:0.3rem;text-align: center;color:#ffb332;font-weight: bold;}
+
+.partFive{background: #f3f3f3;height: 6rem;width: 100%;padding: 0.1rem 0 0 0 ;}
+.partFiveL,.partFiveR{float: left;}
+.partFiveL{width: 40%;}
+.partFiveR{width: 58%;}
+.partFiveL img{display: block;width:4.7rem;height: 2.9rem;}
+.partFiveR{padding: 0 0 0 0.2rem;}
+.partFiveR ul{padding: 0 0 0 0.2rem;}
+.partFiveR ul li:nth-of-type(even){margin: 0.15rem 0 0.1rem 0.8rem;}
+.partFiveR ul li{list-style-type:none;list-style-image: url(../img/partFiveLiImg.png);margin: 0.15rem 0 0.1rem 0;width: 44%;}
+.partFiveR ul li a{font-size: 0.18rem;color: #888888;}
+.partFiveR ul li a:hover{color: #333333;font-size: 0.18rem;}
+.partFiveR ul li:hover{list-style-type:none;list-style-image: url(../img/partFiveLiImgC.png);margin: 0.15rem 0 0.1rem 0 ;}
+.partFiveR ul li:nth-of-type(even):hover{margin: 0.15rem 0 0.1rem 0.8rem;}
+
+footer{background: #353535;width: 100%;height: 4.9rem;}
+.footerL{width: ;float: left;}
+.footerR{width: ;float: right;}
+.footerTil .fontCop{font-family: fontCooper;color: #FFFFFF;font-size: 0.62rem;text-align: center;margin: 0.7rem 0 0 0 ;}
+.fontCop span{font-family: fontCooper;color: #ffb332;}
+.fontUnder{font-size: 0.28rem;color: white;text-align: center;}
+.footerTe{margin: 0.4rem 0 0 0;}
+.footerLB{margin: 0.3rem 0;overflow: hidden;}
+.footerLB img,.footerLB p{float: left;}
+.footerLB img{width: 0.3rem;height: 0.3rem;margin: 0.05rem 0 0 0 ;}
+.footerLB P{font-size: 0.27rem;color: #FFFFFF;margin: 0 0 0 0.2rem;}
+.footerR p{color: #FFFFFF;font-size: 0.28rem;text-align: center;}

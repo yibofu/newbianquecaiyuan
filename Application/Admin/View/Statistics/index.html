@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据中心</title>
+    <link href="/Public/Admin/css/mzui.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css"/>
+    <style id="themeStyle"></style>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="/Public/Admin/css/public.css"/>
+    <style>
+        .panel {
+            height: auto !important;
+            border: none !important;
+        }
+
+        .text-muted {
+            text-align: center;
+        }
+
+        .cards {
+            background: white !important;
+            margin: 0 30px;
+        }
+
+        .card {
+            height: 150px;
+        }
+
+        .card > div h1,
+        p {
+            font-weight: normal !important;
+            text-align: center;
+            margin: 0 0 20px 0;
+            font-size: 16px !important;
+        }
+
+        .card > div h1 {
+            font-weight: normal !important;
+            font-size: 30px !important;
+            margin: 40px 0 10px 0;
+        }
+
+        .card > div p {
+            font-size: 20px;
+        }
+
+        .card > div {
+            height: 100%;
+        }
+
+        .dateDay7 a {
+            width: 14%;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .dateDay7 a:hover {
+            color: brown;
+            cursor: pointer;
+        }
+
+        .dateDay7 a:active {
+            color: brown;
+        }
+
+        .shuzhizc {
+            height: 150px;
+        }
+
+        .shuzhizc p {
+            font-weight: normal !important;
+            width: 100%;
+            text-align: center;
+            margin: 40px 0 10px 0 !important;
+            font-size: 20px;
+        }
+
+        .shuzhizc h1 {
+            font-weight: normal !important;
+            width: 100%;
+            text-align: center;
+            font-size: 36px;
+            margin-top: 0;
+        }
+
+        .main .panel-body {
+            padding: 0;
+        }
+
+        .main .dateDay7 {
+            padding: 20px 15px !important;
+        }
+
+        .tabOnn h2 {
+            font-weight: normal !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1;
+        }
+
+        table td h3 {
+            font-weight: normal !important;
+            color: #999;
+        }
+
+        .dateDayY {
+            display: none;
+        }
+
+        .acccc {
+            display: block;
+        }
+
+        .ac {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body style="height: 100%;background:white;">
+<div class="cards">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="col-md-4">
+                <div style=" background: url(/Public/Admin/img/tjgliimg1.png) no-repeat;background-size:95%; overflow: hidden; width: 80px;height: 80px;border-radius: 50%;margin: 30px;border: 1px #ccc solid;"></div>
+            </div>
+            <div class="col-md-8">
+                <h1>{$yesterdayRegisteredTotal}</h1>
+                <p>昨日新注册会员</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="col-md-4">
+                <div style=" background: url(/Public/Admin/img/tjgliimg2.png) no-repeat;background-size:95%; overflow: hidden; width: 80px;height: 80px;border-radius: 50%;margin: 30px;border: 1px #ccc solid;"></div>
+            </div>
+            <div class="col-md-8">
+                <h1>{$yesterdayPayTotal}</h1>
+                <p>昨日付费会员</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="col-md-4">
+                <div style=" background: url(/Public/Admin/img/tjgliimg3.png) no-repeat;background-size:95%; overflow: hidden; width: 80px;height: 80px;border-radius: 50%;margin: 30px;border: 1px #ccc solid;"></div>
+            </div>
+            <div class="col-md-8">
+                <h1>{$yesterdayMoenyTotal}</h1>
+                <p>昨日成交金额</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="panel-heading">
+            <h3 class="title">按日期查询订单</h3>
+            <form id="search-form" class="col-md-4">
+                <div class="input-group date form-date col-md-12 col-sm-12" data-date="" data-date-format="dd MM yyyy"
+                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" name="create_time" size="16" type="text" value="" placeholder="请输入要查询的日期" readonly="">
+                    <span class="input-group-addon"><span class="icon-remove"></span></span>
+                    <span class="input-group-addon"><span class="icon-calendar"></span></span>
+                </div>
+            </form>
+            <button class="btn btn-info " onclick="searchar()">查询</button>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-fixed table-hover table-bordered" name="table_name">
+                <thead>
+                <tr>
+                    <th>注册数</th>
+                    <th>付费数</th>
+                    <th>订单金额</th>
+                    <th>订单时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="timeOrder" id="vo">
+                    <tr>
+                        <td>{$vo.registerNum}</td>
+                        <td>{$vo.orderPayNum}</td>
+                        <td>{$vo.sum(pay_number)}</td>
+                        <td>{$vo.date(create_time)}</td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="panel-body">
+            <table class="table table-hover table-bordered tabOnn">
+                <thead>
+                <tr>
+                    <th>最近七天交易数据</th>
+                    <th>注册数</th>
+                    <th>付费数</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="arr" id="li">
+                    <tr>
+                        <td>
+                            <h3>{$li.sevenNum}</h3>
+                        </td>
+                        <td>
+                            <h3>{$li.day}</h3>
+                        </td>
+                        <td>
+                            <h3>{$li.pay}</h3>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+
+            <table class="table table-hover table-bordered tabOnn">
+                <thead>
+                <tr>
+                    <th>最近四个月交易数据</th>
+                    <th>注册数</th>
+                    <th>付费数</th>
+                    <th>成交金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="con" id="co">
+                    <tr>
+                        <td>
+                            <h3>{$co.fourMouth}</h3>
+                        </td>
+                        <td>
+                            <h3>{$co.day}</h3>
+                        </td>
+                        <td>
+                            <h3>{$co.pay}</h3>
+                        </td>
+                        <td>
+                            <h3>{$co.money}</h3>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <table class="table table-hover  table-bordered table-fixed">
+                <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h3>总金额</h3>
+                    </td>
+                    <td colspan="10">
+                        <h3 style="text-align: left;">￥{$moneyTotal}</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h3>总会员</h3>
+                    </td>
+                    <td colspan="10">
+                        <h3 style="text-align: left;">{$memberTotal}人</h3>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script>
+    $(".dateDayY").eq(0).addClass("acccc");
+    $(".dateDay7 a").eq(0).addClass("ac");
+    $(".dateDay7 a").click(function () {
+        $(".dateDay7 a").removeClass("ac");
+        $(this).addClass("ac");
+        $(".dateDayY").removeClass("acccc")
+        $(".dateDayY").eq($(this).index()).addClass("acccc");
+    })
+
+    function searchar() {
+        var tablename = $("select[name='table_name']").val();
+        var url = '__ACTION__';
+        var query = $('#search-form').serialize();
+        if (url.indexOf('?') > 0) {
+            url += '&' + query;
+        } else {
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+
+    $(".form-date").datetimepicker(
+        {
+            language: "zh-CN",
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: "yyyy-mm-dd"
+        });
+</script>
+
+</html>

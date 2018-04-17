@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>管理员权限规则</title>
+  <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+  <script src="/Public/Admin/js/jquery.js"></script>
+  <script src="/Public/Admin/js/zui.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="panel-heading">
+        <h2 class="title">增加权限规则</h2>
+      </div>
+        <form class="form-horizontal form-condensed" style="margin-top:50px;">
+    <div class="form-group">
+      <label for="exampleInputAccount7" class="col-sm-2">权限名称</label>
+      <div class="col-sm-3">
+        <select name="authname" class="form-control" id="exampleInputAddress7">
+          <option value="0">---请选择权限名称---</option>
+          <volist name="result" id="vo">
+            <option value="{$vo.id}">{$vo.auth_name}</option>
+          </volist>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword7" class="col-sm-2">权限规则名称</label>
+      <div class="col-md-6 col-sm-10">
+        <input type="text" name="rulename" class="form-control" id="exampleInputPassword7" placeholder="权限规则">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword7" class="col-sm-2">url地址</label>
+      <div class="col-md-6 col-sm-10">
+        <input type="text" name="url" class="form-control" id="exampleInputPassword7" placeholder="地址">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputAddress7" class="col-sm-2">备注说明</label>
+      <div class="col-md-6 col-sm-10">
+        <input type="text" name="remarks" class="form-control" id="exampleInputAccount7" placeholder="备注说明">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button name="sub" class="btn btn-primary">确认提交</button>
+        <a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+      </div>
+    </div>
+  </form>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $("button[name='sub']").bind('click',function(){
+    var authname = $("select[name='authname']").val();
+    var rulename = $("input[name='rulename']").val();
+    var url = $("input[name='url']").val();
+    var remarks = $("input[name='remarks']").val();
+    if(authname !== '' && rulename !== '' && url !== '' && remarks !== ''){
+        $("button").attr("disabled",true);
+        $("button").attr("type","button");
+    }
+    $.ajax({
+      type:'post',
+      url:"{:U('Authrules/addlist')}",
+      data:{"authname":authname,"rulename":rulename,"url":url,"remarks":remarks},
+      success:function(data){
+        var data = eval("("+data+")");
+        if(data.error == true){
+          new $.zui.Messager('提示消息：成功', {
+          type:'success',
+          placement: 'bottom-right' // 定义显示位置
+          }).show();
+          setTimeout(function(){
+						window.location.href = "{:U('Authrules/index')}";
+					},1500);
+        }else{
+          new $.zui.Messager('提示消息：失败', {
+          type:'danger',
+          placement: 'bottom-right' // 定义显示位置
+          }).show();
+        }
+      }
+    })
+  })
+</script>
+</html>

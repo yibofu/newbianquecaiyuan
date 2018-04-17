@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>管理员角色</title>
+</head>
+<body>
+<form action="{:U('Role/message')}" method="post">
+    <div style="width: 500px;height: 500px; border: 1px solid red;float: left;margin-left: 100px;">
+        <div class="content" style="width: 295px;height: 458px;border: 1px solid red;float: left;">
+            角色名称：<input type="text" name="rolename"><br/>
+            描述：<input type="text" name="remarks">
+        </div>
+        <div class="role" style="width: 200px;height: 458px;border: 1px solid green;float: left;">
+            <lable>模块信息：</lable>
+            <div>
+                <volist name="result" id="vo">
+                    <input type="checkbox" name="authname[]" value="{$vo.id}" id="">{$vo.auth_name}
+                </volist>
+            </div>
+        </div>
+        <div class="but">
+            <input type="submit" name="sure" value="确定">
+            <input type="button" name="quxiao" value="取消">
+        </div>
+    </div>
+</form>
+</body>
+</html>

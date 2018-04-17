@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>公司图表</title>
+		<link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+		<link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css" />
+		<script src="/Public/Admin/js/jquery.js"></script>
+		<script src="/Public/Admin/js/zui.min.js"></script>
+		<script src="/Public/Admin/js/datetimepicker.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="panel">
+				<div class="panel-heading">
+					<h2 class="title">公司 &nbsp;{$com.company_name}&nbsp; 的成员详细信息</h2>
+
+					<form id="search-form" class="col-md-6">
+						<div class="col-sm-4">
+							<input type="hidden" name="company_id" value="{$com.id}">
+	      			<select name="table_name" class="form-control search">
+								<option value="0">--选择图表名称--</option>
+								<volist name="condi" id="voo">
+	        				<option value="{$voo.id}">{$voo.table_name}</option>
+								</volist>
+	      			</select>
+	    			</div>
+            <div class="input-group date form-date col-md-6 col-sm-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+              <input class="form-control" name="create_time" size="16" type="text" value="" readonly="">
+              <span class="input-group-addon"><span class="icon-remove"></span></span>
+              <span class="input-group-addon"><span class="icon-calendar"></span></span>
+            </div>
+					</form>
+          <button class="btn btn-info " onclick="searcha()">查询</button>
+				</div>
+
+				<div class="panel-body">
+					<table class="table table-fixed table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>图表名称</th>
+								<th>上传时间</th>
+								<!-- <th>操作</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<volist name="list" id="vo">
+							<tr>
+								<td>{$vo.table_name}</td>
+								<td>{$vo.create_time}</td>
+								<!-- <td>
+									<a class="btn btn-info" href="">下载</a>
+								</td> -->
+							</tr>
+							</volist>
+						</tbody>
+					</table>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- 分页样式 -->
+		<div class="col-md-offset-5">
+			<ul class="pager">
+			{$page}
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+	function searcha(){
+		  var tablename = $("select[name='table_name']").val();
+
+	        var url = '__ACTION__';
+
+	        var query  = $('#search-form').serialize();
+
+	        if( url.indexOf('?')>0 ){
+	            url += '&' + query;
+	        }else{
+	            url += '?' + query;
+	        }
+	        window.location.href = url;
+	}
+	$(".form-date").datetimepicker(
+	{
+			language:  "zh-CN",
+			weekStart: 1,
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			minView: 2,
+			forceParse: 0,
+			format: "yyyy-mm-dd"
+	});
+	</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分享链接</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/mycss.css"/>
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css"/>
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/qrcode.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-heading" style="overflow:hidden">
+        <a class="btn btn-info pull-left" href="{:U('ShareLink/add')}">新增链接</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-fixed table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>链接名称</th>
+                <th>链接地址</th>
+                <th>二维码</th>
+                <th>生成时间</th>
+                <th>用途</th>
+                <th>生成人</th>
+                <th>此链接注册人数</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.linkname}</td>
+                    <td id="linka"><input type="text" class="copytext" value="{$vo.linkaddress}" readonly style="width:100px;border:0"><button id="copyaddress" class="copyaddressbtn btn btn-info">复制</button></td>
+                    <td>{$vo.code}<a class="btn btn-info " href="{:U('ShareLink/code')}?id={$vo.id}">点击生成二维码</a></td>
+                    <td>{$vo.create_time}</td>
+                    <td>{$vo.use}</td>
+                    <td>{$vo.sharepeople}</td>
+                    <td>{$vo.renum} <a class="btn btn-info" href="{:U('ShareLink/detail')}?id={$vo.id}">查看</a></td>
+                    <td>
+                        <a class="btn btn-info " href="{:U('ShareLink/update')}?id={$vo.id}">修改</a>
+                        <a class="btn btn-info " href="{:U('ShareLink/delete')}?id={$vo.id}">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    $(".copyaddressbtn").on('click',function(){
+        var copytext = $(this).parent().find('.copytext');
+        copytext[0].select(); //选择对象
+        document.execCommand("Copy"); //执行浏览器复制命令
+        alert("复制成功");
+    });
+</script>
+</html>

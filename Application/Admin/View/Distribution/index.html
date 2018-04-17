@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>好友分享</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/mycss.css"/>
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css"/>
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-heading">
+        <form id="search-form">
+            <div class="form-group col-md-2">
+                <input type="text" name="phone" class="form-control search" id="exampleInputAccount1" placeholder="手机号">
+            </div>
+            <button class="btn btn-info" onclick="searcha()">查询</button>
+        </form>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>推荐人昵称</th>
+                <th>推荐人手机</th>
+                <th>推荐下载数</th>
+                <th>推荐注册数</th>
+                <th>推荐客户列表</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.nick_name}</td>
+                    <td>{$vo.phone}</td>
+                    <td>{$vo.count(nphone)}</td>
+                    <td>{$vo.total}</td>
+                    <td>
+                        <a class="btn btn-info " href="{:U('Distribution/detail')}?id={$vo.id}">查看</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    function searcha() {
+        var url = '__ACTION__';
+        var query = $('#search-form').find('.search').serialize();
+
+        if (url.indexOf('?') > 0) {
+            url += '&' + query;
+        } else {
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+
+    // 选择时间和日期
+    $(".form-date").datetimepicker(
+        {
+            language: "zh-CN",
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: "yyyy-mm-dd"
+        });
+</script>
+</html>

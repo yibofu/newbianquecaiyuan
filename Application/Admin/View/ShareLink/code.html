@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>二维码</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/qrcode.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h2 class="title">分享人&nbsp;&nbsp;&nbsp;{$result['sharepeople']}&nbsp;&nbsp;&nbsp;于{$result['create_time']}分享的二维码</h2>
+        </div>
+        <div class="panel-body">
+            <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+            <a class="btn btn-info " href="javascript:history.back()" style="margin:20px 10px;">返回</a>
+            <button class="btn btn-info "  onclick="download()" style="margin:20px 10px;">点击下载到本地</button>
+        </div>
+    </div>
+    <input type="hidden" name="hid" value="{$result['linkaddress']}">
+</div>
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width : 100,
+        height : 100
+    });
+    var linkaddress = $("input[name='hid']").val();
+    function makeCode () {
+        qrcode.makeCode(linkaddress);
+    }
+    makeCode();
+    if(linkaddress != ""){
+        makeCode();
+    }
+
+    //下载图片
+    function download(){
+        var data = $("canvas")[0].toDataURL().replace("image/png", "image/octet-stream;");　　
+        var filename="tupian.png";
+        var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+        save_link.href = data;
+        save_link.download = filename;
+        var event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        save_link.dispatchEvent(event);
+    }
+</script>
+</html>

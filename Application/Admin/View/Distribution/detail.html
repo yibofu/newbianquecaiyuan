@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分享人列表</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css"/>
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h2 class="title">分享人 &nbsp;{$username}&nbsp; 的分享成员列表</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-fixed table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>昵称</th>
+                    <th>手机号</th>
+                    <th>下载时间</th>
+                    <th>注册时间</th>
+                    <th>开通会员</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="vo">
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.uname}</td>
+                        <td>{$vo.nphone}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>{$vo.registerTime}</td>
+                        <td>{$vo.vip_start_time}</td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    function searcha() {
+        var tablename = $("select[name='table_name']").val();
+
+        var url = '__ACTION__';
+
+        var query = $('#search-form').serialize();
+
+        if (url.indexOf('?') > 0) {
+            url += '&' + query;
+        } else {
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+</script>
+</html>

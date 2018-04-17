@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>成员列表</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h2 class="title">公司 &nbsp;{$result.company_name}&nbsp; 的成员详细信息</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-fixed table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>电话</th>
+                    <th>部门</th>
+                    <th>角色</th>
+                    <th>权限</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="vo">
+                    <tr>
+                        <td>{$vo.nick_name}</td>
+                        <td>{$vo.phone}</td>
+                        <td>{$vo.department}</td>
+                        <td>{$vo.role_name}</td>
+                        <td>
+                            <volist name="vo['auth_name']" id="li">
+                                <p>{$li}</p>
+                            </volist>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+
+    $("button[name='sub']").bind('click', function () {
+        var role_name = $("input[name='role_name']:checked").val();
+        var account = $("input[name='account']").val();
+        var nick_name = $("input[name='nick_name']").val();
+        var password = $("input[name='password']").val();
+        var auth_name = [];
+        $('input[name=auth_name]').each(function () {
+            if (this.checked) {
+                auth_name.push($(this).val());
+            }
+        });
+        var status = $("select[name='status']").val();
+        var admin_type = $("select[name='admin_type']").val();
+        if (role_name !== '' && account !== '' && nick_name !== '' && password !== '') {
+            $("button").attr("disabled", true);
+            $("button").attr("type", "button");
+        }
+        $.ajax({
+            type: 'post',
+            url: "{:U('Admin/updatelist')}",
+            data: {
+                "role_name": role_name,
+                "account": account,
+                "nick_name": nick_name,
+                "password": password,
+                "auth_name": auth_name,
+                "status": status,
+                "admin_type": admin_type
+            },
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                if (data.error == true) {
+                    new $.zui.Messager('提示消息：成功', {
+                        type: 'success',
+                        placement: 'bottom-right' // 定义显示位置
+                    }).show();
+                    setTimeout(function () {
+                        window.location.href = "{:U('Admin/index')}";
+                    }, 1500);
+                } else {
+                    new $.zui.Messager('提示消息：失败', {
+                        type: 'danger',
+                        placement: 'bottom-right' // 定义显示位置
+                    }).show();
+                }
+            }
+        })
+    })
+</script>
+</html>

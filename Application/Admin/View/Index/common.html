@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>平台管理</title>
+		<link href="/Public/Admin/css/mzui.css" rel="stylesheet">
+		<link href="/Public/Admin/css/doc.min.css" rel="stylesheet">
+		<style id="themeStyle"></style>
+		<script type="text/javascript" src="http://zui.sexy/dist/lib/prettify/prettify.js"></script>
+		<script type="text/javascript" src="/Public/Admin/js/jquery.js"></script>
+		<script type="text/javascript" src="http://zui.sexy/dist/js/zui.min.js"></script>
+		<link rel="stylesheet" href="/Public/Admin/css/public.css" />
+		<style media="screen">
+			.icon,
+			[class*=" icon-"],
+			[class^=icon-] {
+				line-height: 1.7;
+			}
+			
+			.icon-chevron-right {
+				right: 3px!important;
+			}
+			
+			.zong .nav li a {
+				padding: 0!important;
+				height: 40px;
+			}
+			
+			.nav-parent>a {
+				font-weight: 700;
+			}
+			
+			
+			.nav>li>a:focus, .nav>li>a:hover, .nav>li>a:active{
+				background-color: #03b8cf;
+				border-color: #03b8cf;
+			}
+			
+			
+			.userSelect {
+				box-shadow: 0 0 2px 2px #DDDDDD;
+				display: none;
+				overflow: hidden;
+				position: absolute;
+				top: 50px;
+				left: -15px;
+				background: white;
+				width: 80px;
+			}
+			
+			.userSelect span {
+				cursor: pointer;
+				text-align: center;
+				display: block;
+				width: 100%;
+				margin: 0;
+				text-align: center;
+				line-height: 30px;
+			}
+			
+			.userSelect span:hover {
+				background: #E9E9E9;
+				color: #8BC34A;
+				text-decoration: none;
+			}
+			.panel-body li{border-bottom: 1px #eee  solid;}
+			.panel-heading{padding: 0!important;}
+			.panel-heading>h3{display:inline-block;width: 100%;height: 100%;}
+			.panel-heading>h3>a{display:inline-block;width: 100%;height: 100%;padding: 4px 15px;}
+			.panel-heading>h3>a:focus, .panel-heading>h3>a:hover {
+			    background-color: #03b8cf;
+			    border-color: #03b8cf;
+			    color: white;
+			}
+		</style>
+
+	</head>
+
+	<body style="height: 100%;">
+		<header>
+			<nav class="navbar" style="margin-bottom: 0;background: white;border-bottom: 1px #d4d4d4 solid;" role="navigation">
+				<div class="container-fluid">
+					<!-- 导航头部 -->
+					<div class="navbar-header" style="width: 150px;">
+						<!-- 移动设备上的导航切换按钮 -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+									<span class="sr-only">切换导航</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+						<!-- 品牌名称或logo -->
+						<a class="navbar-brand navbar-inverse" href="#" style="background: none;padding: 10px 0 10px  50px;">
+							<img src="/Public/Admin/img/logo.png" width="80%" style="margin: 0!important;padding: 0!important;" />
+						</a>
+					</div>
+					<!-- 导航项目 -->
+					<div class="collapse navbar-collapse navbar-collapse-example">
+						<!-- 一般导航项目 -->
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a target="links" href="{:U('Statistics/index')}" class="links dropdown-toggle">首页</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right" style="position:relative;">
+							<li class="user">
+								<a href="">
+									<i class="icon icon-user" style="font-size: 16px;"></i>
+								</a>
+							</li>
+							<li>
+								<a href="{:U('Index/loginout')}">
+									<i class="icon icon-off" style="font-size: 16px;" title="退出"></i>
+								</a>
+							</li>
+							<div class="userSelect">
+								<span>管理员：{$adminname}</span>
+							</div>
+						</ul>
+					</div>
+					<!-- END .navbar-collapse -->
+				</div>
+			</nav>
+		</header>
+		<div class="zong" style="width: 100%;height: 170%;">
+			<nav class="menu" data-ride="menu" style=" width: 10%;height:100%;background: white;float: left;">
+				<!--新添加的-->
+				<div class="panel-group newadd" id="accordionPanels" aria-multiselectable="true" >
+				  <volist name="res" id="vo">
+				  <div class="panel panel-default" style="margin: 0;height: 100%;">
+				    <div class="panel-heading" style="background: #fff;padding: 4px 15px;">
+				      <h3 class="panel-title" style="text-align: center;">
+				        <a class="collapsed" data-toggle="collapse" data-parent="#accordionPanels" style="text-decoration: none;">
+				        	  <i class="icon icon-folder-close-alt"></i>
+				        	  {$vo.auth_name}
+				        </a>
+				      </h3>
+				    </div>
+				    <div class="panel-collapse collapse" >
+				      <div class="panel-body" style="padding: 0;">
+				      	<ul class="nav">
+							<volist name="vo.row" id="rulename">
+								<li><a class="links" target="links" href="{:U($rulename['path'])}">{$rulename.rule_name}</a></li>
+							</volist>
+				      	</ul>
+				      </div>
+				    </div>
+				  </div>
+				  </volist>
+				</div>
+			</nav>
+			<div class="main" style="float: left;height: 100%!important;">
+				<iframe src="{:U('Statistics/index')}" name="links" height="100%" width="100%">
+					</iframe>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(".main").css('height',$('html').height)
+		var ss;
+		window.onload = function() {
+				var w = document.documentElement.clientWidth; //可见区域宽度
+				var h = document.documentElement.clientHeight; //可见区域高度
+				ss = document.getElementById('ha');
+				//alert(w);
+				var quanxuan = document.getElementById("quanxuan");
+				var chkL = document.getElementsByName("chk");
+			}
+			//		$('.menu .nav').on('click', 'li:not(.nav-parent) > a', function() {
+			//			var $this = $(this);
+			//			$('.menu .nav .active').removeClass('active');
+			//			$this.closest('li').addClass('active');
+			//			$this.closest('.nav-parent').addClass('active');
+			//		});
+		
+		/*面包屑*/
+		$(".user").hover(function() {
+			$(".userSelect").show();
+		})
+		$(".userSelect").mouseleave(function() {
+			$(".userSelect").hide();
+		})
+		$(".user").parent("ul").mouseleave(function() {
+			$(".userSelect").hide();
+		})
+		
+		/*new*/
+//		$('.panel-heading').bind({
+//			click:function(){
+//				$(this).css({'background':'#03b8cf','color':'white'});
+//				$(this).parent('.panel').siblings().find('.panel-heading').css({'background':'#fff','color':'333'});
+//			},
+//			mouseover:function(){$(this).css({'background':'#03b8cf','color':'white'});},
+//			mouseleave:function(){$(this).css({'background':'#fff','color':'#333'});}
+//		});
+		$('.nav>li').bind({
+			click:function(){
+				$(this).css({'background':'#03b8cf','color':'white'});
+				$(this).siblings().css({'background':'#fff','color':'#333'});
+			}
+//			click:function(){
+//				$(this).css({'background':'#03b8cf','color':'white'});
+//				$(this).parent('.panel').siblings().find('.panel-heading').css({'background':'#fff','color':'333'});
+//			},
+//			mouseover:function(){$(this).css({'background':'#03b8cf','color':'white'});},
+//			mouseleave:function(){$(this).css({'background':'#fff','color':'#333'});}
+		});
+		/*遍历ID*/
+		funser();
+		function funser(){
+			var panel=document.getElementsByClassName('panel');
+			for (var i=0;i<panel.length;i++) {
+				panel[i].getElementsByTagName("div")[0].getElementsByTagName('a')[0].setAttribute('href','#heading'+i);
+				panel[i].getElementsByTagName("div")[1].setAttribute('id','heading'+i);
+			}
+		}
+	</script>
+
+</html>

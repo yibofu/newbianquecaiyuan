@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分享链接</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/mycss.css"/>
+    <link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css"/>
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+    <script src="/Public/Admin/js/qrcode.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-body">
+        <table class="table table-fixed table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>用户手机号</th>
+                <th>昵称</th>
+                <th>注册时间</th>
+                <th>是否付费</th>
+                <th>付费公司</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="result" id="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.phone}</td>
+                    <td>{$vo.nick_name}</td>
+                    <td>{$vo.create_time}</td>
+                    <td>{$vo.is_pay}</td>
+                    <td>{$vo.company_name}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

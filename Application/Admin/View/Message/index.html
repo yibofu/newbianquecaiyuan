@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>留言管理</title>
+		<link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+		<link rel="stylesheet" href="/Public/Admin/css/mycss.css" />
+		<link rel="stylesheet" href="/Public/Admin/css/datetimepicker.min.css" />
+		<script src="/Public/Admin/js/jquery.js"></script>
+		<script src="/Public/Admin/js/zui.min.js"></script>
+		<script src="/Public/Admin/js/datetimepicker.min.js"></script>
+	</head>
+	<body>
+			<div class="panel">
+				<div class="panel-heading">
+					<form id="search-form" class="col-md-6">
+						<div class="form-group col-md-6 col-sm-6">
+     					<input type="text" name="content" class="form-control search" id="exampleInputAccount1" placeholder="输入搜索的内容或关键字">
+   					</div>
+            <div class="input-group date form-date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+              <input class="form-control" name="create_time" size="16" type="text" value="" readonly="">
+              <span class="input-group-addon"><span class="icon-remove"></span></span>
+              <span class="input-group-addon"><span class="icon-calendar"></span></span>
+            </div>
+					</form>
+          <button class="btn btn-info" onclick="searcha()">查询</button>
+				</div>
+				<div class="panel-body">
+					<table class="table table-fixed table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>留言人昵称</th>
+								<th>留言人电话</th>
+								<th>留言内容</th>
+								<th>留言时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<volist name="list" id="vo">
+							<tr>
+								<td>{$vo.nick_name}</td>
+								<td>{$vo.phone}</td>
+								<td>{$vo.content}</td>
+								<td>{$vo.create_time}</td>
+								<td>
+									<a class="btn btn-info " href="{:U('Message/show')}?id={$vo.id}">查看</a>
+									<a class="btn btn-info " href="{:U('Message/delete')}?id={$vo.id}" onclick="delete()">删除</a>
+									<!-- <a class="btn btn-info " onclick="confirmDel('+key+',\'delUser\')">删除1</a> -->
+								</td>
+							</tr>
+							</volist>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- 分页样式 -->
+			<div class="col-md-offset-5">
+				<ul class="pager">
+				{$page}
+				</ul>
+			</div>
+	</body>
+	<script type="text/javascript">
+	function searcha(){
+	        var url = '__ACTION__';
+	        var query  = $('#search-form').find('.search').serialize();
+
+	        if( url.indexOf('?')>0 ){
+	            url += '&' + query;
+	        }else{
+	            url += '?' + query;
+	        }
+	        window.location.href = url;
+	}
+
+	$(".form-date").datetimepicker(
+  {
+      language:  "zh-CN",
+      weekStart: 1,
+      todayBtn:  1,
+      autoclose: 1,
+      todayHighlight: 1,
+      startView: 2,
+      minView: 2,
+      forceParse: 0,
+      format: "yyyy-mm-dd"
+  });
+
+	function confirmDel(id,todo){
+		alert(111);
+	    (new $.zui.ModalTrigger({size:'sm',title:'确认删除',
+	        custom: '<div style="line-height:32px">确定继续删除？<div class="btn-group pull-right"><button type="button" class="btn" data-dismiss="modal">取消</button><button type="button" class="btn btn-danger" data-dismiss="modal" onclick="'+todo+'('+id+')">删除</button></div></div>'
+	    })).show();
+	}
+	</script>
+</html>

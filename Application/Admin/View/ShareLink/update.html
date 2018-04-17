@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改分享信息</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <link rel="stylesheet" href="/Public/Admin/css/zui.uploader.css">
+    <script src="/Public/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/prettify.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/zui.min.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/zui.uploader.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h2 class="title">修改信息</h2>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" style="margin: 50px 0;">
+                <div class="form-group">
+                    <label for="Input1" class="col-sm-2">链接名称</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" required name="linkname" value="{$result['linkname']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Input3" class="col-sm-2">用途</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" rows="3" name="use" value="{$result['use']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="hidden" name="hid" value="{$result['id']}">
+                        <button name="sub" type="button" class="btn btn-primary">确认提交</button>
+                        <a name="sub" href="javascript:history.back()" class="btn btn-primary">返回</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $("button[name='sub']").bind('click',function(){
+        var id = $("input[name='hid']").val();
+        var linkname = $("input[name='linkname']").val();
+        var linkaddress = $("input[name='linkaddress']").val();
+//        var createPeople = $("input[name='createPeople']").val();
+        var use = $("input[name='use']").val();
+        if(id != '' && linkname != '' && use != ''){
+            $("button").attr("disabled",true);
+            $("button").attr("type","button");
+        }
+        $.ajax({
+            type:'post',
+            url:"{:U('ShareLink/updatelist')}",
+            data:{"id":id,"linkname":linkname,"linkaddress":linkaddress,"use":use},
+            success:function(data){
+                var data = eval("("+data+")");
+                if(data.error == true){
+                    new $.zui.Messager('提示消息：成功', {
+                        type:'success',
+                        placement: 'bottom-right' // 定义显示位置
+                    }).show();
+                    setTimeout(function(){
+                        window.location.href = "{:U('ShareLink/index')}";
+                    },1500);
+                }else{
+                    new $.zui.Messager('提示消息：失败', {
+                        type:'danger',
+                        placement: 'bottom-right' // 定义显示位置
+                    }).show();
+                }
+            }
+        })
+    })
+</script>
+</html>
