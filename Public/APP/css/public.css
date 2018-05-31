@@ -1,0 +1,11 @@
+*{padding: 0;margin: 0;font-family: "微软雅黑";}
+a{text-decoration: none;}
+ul{overflow: hidden;list-style-type: none;}
+@font-face {
+	font-family:"fontCooper";
+	src: url(../Fonts/CooperBlackStd.otf);
+}
+ul li{float: left;}
+.contentCenter{width: 1200px;margin: 0 auto;overflow: hidden;padding: 0 0 20px 0;}
+.contantCenterOther{width: 1200px;margin: 0 auto;padding: 0 0 20px 0;position:  relative;}
+header,comment,footer{width: 100%;min-width:1200px; overflow: hidden;}
