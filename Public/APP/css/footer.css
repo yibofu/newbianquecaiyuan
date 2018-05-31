@@ -1,0 +1,21 @@
+
+footer{background: #1b252e;height: 306px;width: 100%;}
+/*footer*/
+@font-face {
+	font-family:"fontCooper";
+	src: url(../Fonts/CooperBlackStd.otf);
+}
+.footerTil .fontCop{font-family: fontCooper;color: #FFFFFF;font-size: 50px;text-align: center;margin: 30px 0 0 0;}
+.fontCop span{font-family: fontCooper;color: #ffb332;}
+.fontUnder{font-size: 28px;color: white;text-align: center;font-weight: bold;margin:  0;letter-spacing: 5px;}
+.footerTex{overflow: hidden;margin:  30px 0;}
+.footerTex>div{float: left;}
+.footerTextex{overflow: hidden;margin: 20px auto;}
+.footerTextex img,.footerTextex p{float: left;}
+.footerTextex p,.footerTextexP{color: #8b959e;font-size: 16px;line-height:  30px;}
+.footerTextex img{margin: 0 15px 0 70px;}
+.footerTextexP{text-indent: 103px;}
+.footerTextexPO{text-indent: 110px;font-size: 14px;color: #8b959e;}
+.footerLogo{width: 20%;}
+.footerTexL,.footerTexC{width: 35%;}
+.footerTexR{width: 10%;}

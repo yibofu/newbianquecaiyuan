@@ -5,7 +5,7 @@ use Think\Model;
 
 class BaseModel extends Model
 {
-	protected $notSoftDelete = false;
+    protected $notSoftDelete = false;
     /**
      * 新增数据
      * @access public
@@ -14,24 +14,24 @@ class BaseModel extends Model
      * @param boolean $replace 是否replace
      * @return mixed
      */
-	public function add($data='',$options=array(),$replace=false)
-	{
+    public function add($data='',$options=array(),$replace=false)
+    {
         $data['create_time'] = formateTime();
-		return parent::add($data,$options,$replace);
-	}
+        return parent::add($data,$options,$replace);
+    }
 
-	/**
+    /**
      * 保存数据
      * @access public
      * @param mixed $data 数据
      * @param array $options 表达式
      * @return boolean
      */
-	public function save($data='', $options=array())
-	{
+    public function save($data='', $options=array())
+    {
         $data['update_time'] = formateTime();
         return parent::save($data,$options);
-	}
+    }
 
     /**
      * 删除数据
@@ -39,10 +39,10 @@ class BaseModel extends Model
      * @param mixed $options 表达式
      * @return mixed
      */
-	public function delete($options=array())
-	{
-		$data['delete_time'] = formateTime();
-		$data['is_delete'] = '1';
+    public function delete($options=array())
+    {
+        $data['delete_time'] = formateTime();
+        $data['is_delete'] = '1';
         if(empty($data)) {
             // 没有传递数据，获取当前数据对象的值
             if(!empty($this->data)) {
@@ -145,7 +145,7 @@ class BaseModel extends Model
             $this->_after_delete($data,$options);
         }
         return $result;
-	}
+    }
 
     /**
      * 查询数据集
@@ -153,11 +153,11 @@ class BaseModel extends Model
      * @param array $options 表达式参数
      * @return mixed
      */
-	public function select($options=array())
-	{
+    public function select($options=array())
+    {
         $this->_addSoftDeleteWhere();
-		return parent::select($options);
-	}
+        return parent::select($options);
+    }
 
     /**
      * 获取一条记录的某个字段值
@@ -166,11 +166,11 @@ class BaseModel extends Model
      * @param string $spea  字段数据间隔符号 NULL返回数组
      * @return mixed
      */
-	public function getField($field,$sepa=null)
-	{
+    public function getField($field,$sepa=null)
+    {
         $this->_addSoftDeleteWhere();
-		return parent::getField($field,$sepa);
-	}
+        return parent::getField($field,$sepa);
+    }
 
     /**
      * 创建数据对象 但不保存到数据库
@@ -179,42 +179,42 @@ class BaseModel extends Model
      * @param string $type 状态
      * @return mixed
      */
-	public function create($data='',$type='')
-	{
-        $data = parent::create($data,$type);
-        $data['create_time'] = formateTime();
-        $this->data =   $data;
-        return $data;
-	 }
+//    public function create($data='',$type='')
+//    {
+//        $data = parent::create($data,$type);
+//        $data['create_time'] = formateTime();
+//        $this->data =   $data;
+//        return $data;
+//    }
 
 
 
-	/**
+    /**
      * 查询数据
      * @access public
      * @param mixed $options 表达式参数
      * @return mixed
      */
-	public function find($options=array())
-	{
+    public function find($options=array())
+    {
         $this->_addSoftDeleteWhere();
-		return parent::find($options);
-	}
+        return parent::find($options);
+    }
 
-	public function setNotSoftDelete($mode = true)
-	{
-			$this->notSoftDelete = $mode;
-			return $this;
-	}
+    public function setNotSoftDelete($mode = true)
+    {
+        $this->notSoftDelete = $mode;
+        return $this;
+    }
 
     /**
      * 添加软删除查询条件
      * @access protected
      */
-	protected function _addSoftDeleteWhere(){
-				if($this->notSoftDelete){
-					return;
-				}
+    protected function _addSoftDeleteWhere(){
+        if($this->notSoftDelete){
+            return;
+        }
         if(array_key_exists('where', $this->options)){
             $where = $this->options['where'];
         }else{
@@ -223,4 +223,4 @@ class BaseModel extends Model
         $where['is_delete'] = '0' ;
         $this->options['where'] = $where;
     }
- }
+}

@@ -27,7 +27,7 @@ class LoginController extends BaseController
                 if ($adminInfo['status'] == '0') {
                     $this->error('禁止登录');
                 }
-                $password = password(I("post.password"));
+                $password =password(I("post.password"));
                 if ($password['password'] == $adminInfo['password']) {
                     session('admin_id', '' . $adminInfo['id'] . '');
                     session('admin_account', '' . $adminInfo['account'] . '');

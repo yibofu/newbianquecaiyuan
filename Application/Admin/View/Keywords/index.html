@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>关键字管理</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <script src="/Public/Admin/js/jquery.min.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-heading" style="height: 50px;">
+        <a class="btn btn-primary pull-left" href="{:U('Keywords/add')}">增加</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-fixed table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>账号ID</th>
+                <th>标题</th>
+                <th>关键字</th>
+                <th>描述</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.title}</td>
+                    <td>{$vo.keywords}</td>
+                    <td>{$vo.description}</td>
+                    <td>{$vo.create_time}</td>
+                    <td>{$vo.update_time}</td>
+                    <td>
+                        <a class="btn btn-primary " href="{:U('Keywords/update')}?id={$vo.id}">修改</a>
+                        <a class="btn btn-primary " href="{:U('Keywords/delete')}?id={$vo.id}">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    function searcha() {
+        var url = '__ACTION__';
+        var query = $('#search-form').find('.search').serialize();
+
+        if (url.indexOf('?') > 0) {
+            url += '&' + query;
+        } else {
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+
+</script>
+</html>

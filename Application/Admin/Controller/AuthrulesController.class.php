@@ -15,12 +15,12 @@ class AuthrulesController extends BaseController
         $map['a.is_delete'] = "0";
         $map['b.is_delete'] = "0";
         $rules = D("admin_auth_rules");
-        $count = $rules->table("lbqb_admin_auth_rules as a")->join("lbqb_admin_auths as b on b.id = a.auth_id")
+        $count = $rules->table("bqcy_admin_auth_rules as a")->join("bqcy_admin_auths as b on b.id = a.auth_id")
             ->field('a.id,a.auth_id,a.rule_name,a.remarks,a.module,a.controller,a.action,a.create_time,b.auth_name')
             ->where($map)->order('a.id asc')->setNotSoftDelete()->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $list = $rules->table("lbqb_admin_auth_rules as a")->join("lbqb_admin_auths as b on b.id = a.auth_id")
+        $list = $rules->table("bqcy_admin_auth_rules as a")->join("bqcy_admin_auths as b on b.id = a.auth_id")
             ->field('a.id,a.auth_id,a.rule_name,a.remarks,a.module,a.controller,a.action,a.create_time,b.auth_name')
             ->where($map)->order('a.id asc')->limit($Page->firstRow, $Page->listRows)->setNotSoftDelete()->select();
         $data = $rules->field('id,rule_name')->select();
@@ -141,7 +141,7 @@ class AuthrulesController extends BaseController
         $authrules = D("admin_auth_rules");
         $datas = $authrules->create($data);
         if ($datas) {
-            $authrules->where('id = ' . $id)->save($data);
+            $authrules->where('id = ' . $id)->save($datas);
 
             $datalog['admin_id'] = session("admin_id");
             $logdata = [

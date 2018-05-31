@@ -4,14 +4,13 @@
 		<meta charset="utf-8">
 		<title>管理员权限</title>
 		<link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
-		<link rel="stylesheet" href="/Public/Admin/css/mycss.css" />
-		<script src="/Public/Admin/js/jquery.js"></script>
+		<script src="/Public/Admin/js/jquery.min.js"></script>
 		<script src="/Public/Admin/js/zui.min.js"></script>
 	</head>
 	<body>
 			<div class="panel">
 				<div class="panel-heading">
-					<a class="btn btn-info pull-left" href="{:U('Auths/add')}">增加</a>
+					<a class="btn btn-primary pull-left" href="{:U('Auths/add')}">增加</a>
 				<form id="search-form">
 					<div class="col-sm-3">
 						<select name="authname" class="form-control search sear">
@@ -21,7 +20,7 @@
 							</volist>
 						</select>
     				</div>
-				    <button class="btn btn-info" onclick="searcha()">查询</button>
+				    <button class="btn btn-primary" onclick="searcha()">查询</button>
 				</form>
 				</div>
 				<div class="panel-body">
@@ -43,8 +42,8 @@
 								<td>{$vo.remarks}</td>
 								<td>{$vo.create_time}</td>
 								<td>
-									<a class="btn btn-info " href="{:U('Auths/update')}?id={$vo.id}">修改</a>
-									<a class="btn btn-info " href="{:U('Auths/delete')}?id={$vo.id}">删除</a>
+									<a class="btn btn-primary " href="{:U('Auths/update')}?id={$vo.id}">修改</a>
+									<a class="btn btn-primary " href="{:U('Auths/delete')}?id={$vo.id}">删除</a>
 								</td>
 							</tr>
 							</volist>

@@ -4,16 +4,15 @@
 		<meta charset="utf-8">
 		<title>管理员权限规则</title>
 		<link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
-		<link rel="stylesheet" href="/Public/Admin/css/mycss.css" />
 		<link href="/Public/Admin/css/mzui.css" rel="stylesheet">
-		<script src="/Public/Admin/js/jquery.js"></script>
+		<script src="/Public/Admin/js/jquery.min.js"></script>
 		<script src="/Public/Admin/js/zui.min.js"></script>
 
 	</head>
 	<body>
 			<div class="panel">
 				<div class="panel-heading">
-					<a class="btn btn-info pull-left" href="{:U('Authrules/add')}">增加</a>
+					<a class="btn btn-primary pull-left" href="{:U('Authrules/add')}">增加</a>
 					<form id="search-form">
 						<div class="col-sm-3">
 							<select name="rulename" class="form-control search">
@@ -24,7 +23,7 @@
 							</select>
     					</div>
 					</form>
-					<button class="btn btn-info" onclick="searcha()">查询</button>
+					<button class="btn btn-primary" onclick="searcha()">查询</button>
 				</div>
 				<div class="panel-body">
 					<table class="table table-fixed table-hover table-bordered">
@@ -51,8 +50,8 @@
                 				<td>{$vo.action}</td>
 								<td>{$vo.create_time}</td>
 								<td>
-									<a class="btn btn-info " href="{:U('Authrules/update')}?id={$vo.id}">修改</a>
-									<a class="btn btn-info " href="{:U('Authrules/delete')}?id={$vo.id}">删除</a>
+									<a class="btn btn-primary " href="{:U('Authrules/update')}?id={$vo.id}">修改</a>
+									<a class="btn btn-primary " href="{:U('Authrules/delete')}?id={$vo.id}">删除</a>
 								</td>
 							</tr>
 							</volist>

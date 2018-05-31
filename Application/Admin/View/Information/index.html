@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>资讯管理</title>
+    <link rel="stylesheet" href="/Public/Admin/css/zui.min.css">
+    <script src="/Public/Admin/js/jquery.min.js"></script>
+    <script src="/Public/Admin/js/zui.min.js"></script>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-heading">
+        <a class="btn btn-primary pull-left" href="{:U('Information/add')}">增加</a>
+        <form id="search-form">
+            <div class="form-group col-md-2">
+                <input type="text" name="title" class="form-control search" id="exampleInputAccount1"
+                       placeholder="标题">
+            </div>
+            <button class="btn btn-primary" onclick="searcha()">查询</button>
+        </form>
+    </div>
+    <div class="panel-body">
+        <table class="table table-fixed table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>资讯ID</th>
+                <th>标题</th>
+                <th>作者</th>
+                <th>内容</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.title}</td>
+                    <td>{$vo.auth}</td>
+                    <td>{$vo.condition}</td>
+                    <td>{$vo.create_time}</td>
+                    <td>
+                        <a class="btn btn-primary " href="{:U('Information/update')}?id={$vo.id}">修改</a>
+                        <a class="btn btn-primary " href="{:U('Information/delete')}?id={$vo.id}">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- 分页样式 -->
+<div class="col-md-offset-5">
+    <ul class="pager">
+        {$page}
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    function searcha() {
+        var url = '__ACTION__';
+        var query = $('#search-form').find('.search').serialize();
+
+        if (url.indexOf('?') > 0) {
+            url += '&' + query;
+        } else {
+            url += '?' + query;
+        }
+        window.location.href = url;
+    }
+
+</script>
+</html>

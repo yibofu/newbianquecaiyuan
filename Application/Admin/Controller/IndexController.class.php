@@ -1,13 +1,11 @@
 <?php
-
 namespace Admin\Controller;
-
 use Common\Controller\BaseController;
 
-header("content-type:text/html;charset=utf-8");
-
-class IndexController extends BaseController
-{
+class IndexController extends BaseController{
+    public function index(){
+        $this->display();
+    }
     public function common()
     {
         $adminname = session("admin_account");

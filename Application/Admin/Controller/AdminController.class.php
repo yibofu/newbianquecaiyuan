@@ -22,7 +22,7 @@ class AdminController extends BaseController
         $show = $Page->show();
         $condition['a.is_delete'] = "0";
         $condition['b.is_delete'] = "0";
-        $list = $rules->table("lbqb_admins as a")->join("lbqb_admin_roles as b on b.id = a.role_id")
+        $list = $rules->table("bqcy_admins as a")->join("bqcy_admin_roles as b on b.id = a.role_id")
             ->field('a.id,a.account,a.nick_name,a.status,a.admin_type,a.create_time,b.role_name')
             ->where($condition)->order('a.id asc')->limit($Page->firstRow, $Page->listRows)->setNotSoftDelete()->select();
         foreach ($list as &$val) {

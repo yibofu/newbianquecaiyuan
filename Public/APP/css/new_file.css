@@ -46,14 +46,6 @@ header .imgLogo,header .headerTil{float: left;height: 0.6rem;/* width: 1.5rem; *
 
 .partTwofade{left: 51.3%;}
 
-.partTwo table{width: 100%;border-collapse: collapse;}
-.partTwo table tr td,.partTwo table th td{ border: 1px #dadada solid;text-align: center;height: 0.54rem;}
-.partTwoTex table thead{color: #ffffff;background: #ff8f02;font-size: 0.24rem;}
-.partTwo .rowSpan{color: white;background: #ff8f02;font-size: 0.24rem;position: relative;cursor: pointer;}
-.partTwo .rowSpan img{position: absolute;bottom: 0;right: 0;}
-.partTwo td p{word-spacing: 0.05rem;width: 60%;text-align: left; margin: 0 auto;overflow: hidden;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
-.partTwo td a{border-radius: 0.05rem; display: block;background:#0096ff;color: #FFFFFF;font-size: 0.16rem;width: 1rem;height: 0.3rem;line-height:  0.3rem;margin:  0 auto;}
-
 .partTreeTex{background: url(../img/partThreeBg.png) no-repeat;background-size: 100% 100%;}
 .partThree{overflow: hidden;}
 .partTreeTe1Se{width: 100%;float: left;margin: 0.3rem 0;}
@@ -92,15 +84,21 @@ header .imgLogo,header .headerTil{float: left;height: 0.6rem;/* width: 1.5rem; *
 .partFiveR ul li:hover{list-style-type:none;list-style-image: url(../img/partFiveLiImgC.png);margin: 0.15rem 0 0.1rem 0 ;}
 .partFiveR ul li:nth-of-type(even):hover{margin: 0.15rem 0 0.1rem 0.8rem;}
 
-footer{background: #353535;width: 100%;height: 4.9rem;}
-.footerL{width: ;float: left;}
-.footerR{width: ;float: right;}
-.footerTil .fontCop{font-family: fontCooper;color: #FFFFFF;font-size: 0.62rem;text-align: center;margin: 0.7rem 0 0 0 ;}
-.fontCop span{font-family: fontCooper;color: #ffb332;}
-.fontUnder{font-size: 0.28rem;color: white;text-align: center;}
-.footerTe{margin: 0.4rem 0 0 0;}
-.footerLB{margin: 0.3rem 0;overflow: hidden;}
-.footerLB img,.footerLB p{float: left;}
-.footerLB img{width: 0.3rem;height: 0.3rem;margin: 0.05rem 0 0 0 ;}
-.footerLB P{font-size: 0.27rem;color: #FFFFFF;margin: 0 0 0 0.2rem;}
-.footerR p{color: #FFFFFF;font-size: 0.28rem;text-align: center;}
+
+.partTwo table{width: 100%;border-collapse: collapse;}
+.trHeadD{color: #ffffff;background: #ff8f02;font-size: 24PX;float: left;text-align: center;height: 54PX;line-height: 54px;border: 1px #FFFFFF solid;}
+.trHeadD1{width: 32%;}
+.trHeadD2{width: 55.25%;}
+.trHeadD3{width: 12.25%;}
+.HWdouble{height: 108px;width: 10%;text-align:  center; cursor: pointer;font-size: 24px;color:#FFFFFF;font-weight: 600;background: #ff8f02;letter-spacing: 5px;}
+.HWdouble img{position: relative;bottom: -14px;right: -56px;}
+.HWdouble span{display:block;width: 100%;text-align: center;margin: 30px 0 0 0;}
+.Honly{height: 108px;}
+.partTwo table tr td{border: 1px #dadada solid;text-align: center;}
+.HonlyDiv{height: 54px;width: 100%;overflow: hidden;}
+.HonlyDivB{float: left;line-height: 54px;border: 1px #dadada solid;height:54px;}
+.HonlyDivB1{width: 24.45%;}
+.HonlyDivB2{width: 61.5%;}
+.HonlyDivB3{width: 13.3755%;}
+.HonlyDivB p{word-spacing: 5PX;width: 85%;text-align: left;margin: 0 auto;overflow: hidden;text-overflow:ellipsis;-webkit-line-clamp:1;height: 54px;-webkit-box-orient:vertical;}
+.HonlyDivB a{border-radius: 5PX;display: block;background:#0096ff;color: #FFFFFF;font-size: 16PX;width: 100PX;height: 30PX;line-height:  30PX;margin: 12px auto;}

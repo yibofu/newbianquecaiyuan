@@ -10,8 +10,9 @@
 		<link href="/Public/Admin/css/doc.min.css" rel="stylesheet">
 		<style id="themeStyle"></style>
 		<script type="text/javascript" src="http://zui.sexy/dist/lib/prettify/prettify.js"></script>
-		<script type="text/javascript" src="/Public/Admin/js/jquery.js"></script>
+		<script type="text/javascript" src="/Public/Admin/js/jquery.min.js"></script>
 		<script type="text/javascript" src="http://zui.sexy/dist/js/zui.min.js"></script>
+		<script type="text/javascript" src="/Public/Admin/js/tree.js"></script>
 		<link rel="stylesheet" href="/Public/Admin/css/public.css" />
 		<style media="screen">
 			.icon,
@@ -19,27 +20,27 @@
 			[class^=icon-] {
 				line-height: 1.7;
 			}
-			
+
 			.icon-chevron-right {
 				right: 3px!important;
 			}
-			
+
 			.zong .nav li a {
 				padding: 0!important;
 				height: 40px;
 			}
-			
+
 			.nav-parent>a {
 				font-weight: 700;
 			}
-			
-			
+
+
 			.nav>li>a:focus, .nav>li>a:hover, .nav>li>a:active{
 				background-color: #03b8cf;
 				border-color: #03b8cf;
 			}
-			
-			
+
+
 			.userSelect {
 				box-shadow: 0 0 2px 2px #DDDDDD;
 				display: none;
@@ -50,7 +51,7 @@
 				background: white;
 				width: 80px;
 			}
-			
+
 			.userSelect span {
 				cursor: pointer;
 				text-align: center;
@@ -60,7 +61,7 @@
 				text-align: center;
 				line-height: 30px;
 			}
-			
+
 			.userSelect span:hover {
 				background: #E9E9E9;
 				color: #8BC34A;
@@ -94,7 +95,6 @@
 								</button>
 						<!-- 品牌名称或logo -->
 						<a class="navbar-brand navbar-inverse" href="#" style="background: none;padding: 10px 0 10px  50px;">
-							<img src="/Public/Admin/img/logo.png" width="80%" style="margin: 0!important;padding: 0!important;" />
 						</a>
 					</div>
 					<!-- 导航项目 -->
@@ -126,97 +126,31 @@
 			</nav>
 		</header>
 		<div class="zong" style="width: 100%;height: 170%;">
-			<nav class="menu" data-ride="menu" style=" width: 10%;height:100%;background: white;float: left;">
-				<!--新添加的-->
-				<div class="panel-group newadd" id="accordionPanels" aria-multiselectable="true" >
-				  <volist name="res" id="vo">
-				  <div class="panel panel-default" style="margin: 0;height: 100%;">
-				    <div class="panel-heading" style="background: #fff;padding: 4px 15px;">
-				      <h3 class="panel-title" style="text-align: center;">
-				        <a class="collapsed" data-toggle="collapse" data-parent="#accordionPanels" style="text-decoration: none;">
-				        	  <i class="icon icon-folder-close-alt"></i>
-				        	  {$vo.auth_name}
-				        </a>
-				      </h3>
-				    </div>
-				    <div class="panel-collapse collapse" >
-				      <div class="panel-body" style="padding: 0;">
-				      	<ul class="nav">
+			<nav class="menu" data-ride="menu" style="width: 10%;height:100%;background: white;float: left;">
+				<ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+					<volist name="res" id="vo">
+						<li>
+							<a href="#"><i class="icon icon-plus"></i>{$vo.auth_name}</a>
 							<volist name="vo.row" id="rulename">
-								<li><a class="links" target="links" href="{:U($rulename['path'])}">{$rulename.rule_name}</a></li>
+								<ul>
+									<li><a class="links" target="links" href="{:U($rulename['path'])}">{$rulename.rule_name}</a></li>
+								</ul>
 							</volist>
-				      	</ul>
-				      </div>
-				    </div>
-				  </div>
-				  </volist>
-				</div>
+						</li>
+					</volist>
+				</ul>
 			</nav>
 			<div class="main" style="float: left;height: 100%!important;">
 				<iframe src="{:U('Statistics/index')}" name="links" height="100%" width="100%">
-					</iframe>
+				</iframe>
 			</div>
 		</div>
 	</body>
 	<script>
-		$(".main").css('height',$('html').height)
-		var ss;
-		window.onload = function() {
-				var w = document.documentElement.clientWidth; //可见区域宽度
-				var h = document.documentElement.clientHeight; //可见区域高度
-				ss = document.getElementById('ha');
-				//alert(w);
-				var quanxuan = document.getElementById("quanxuan");
-				var chkL = document.getElementsByName("chk");
-			}
-			//		$('.menu .nav').on('click', 'li:not(.nav-parent) > a', function() {
-			//			var $this = $(this);
-			//			$('.menu .nav .active').removeClass('active');
-			//			$this.closest('li').addClass('active');
-			//			$this.closest('.nav-parent').addClass('active');
-			//		});
-		
-		/*面包屑*/
-		$(".user").hover(function() {
-			$(".userSelect").show();
-		})
-		$(".userSelect").mouseleave(function() {
-			$(".userSelect").hide();
-		})
-		$(".user").parent("ul").mouseleave(function() {
-			$(".userSelect").hide();
-		})
-		
-		/*new*/
-//		$('.panel-heading').bind({
-//			click:function(){
-//				$(this).css({'background':'#03b8cf','color':'white'});
-//				$(this).parent('.panel').siblings().find('.panel-heading').css({'background':'#fff','color':'333'});
-//			},
-//			mouseover:function(){$(this).css({'background':'#03b8cf','color':'white'});},
-//			mouseleave:function(){$(this).css({'background':'#fff','color':'#333'});}
-//		});
-		$('.nav>li').bind({
-			click:function(){
-				$(this).css({'background':'#03b8cf','color':'white'});
-				$(this).siblings().css({'background':'#fff','color':'#333'});
-			}
-//			click:function(){
-//				$(this).css({'background':'#03b8cf','color':'white'});
-//				$(this).parent('.panel').siblings().find('.panel-heading').css({'background':'#fff','color':'333'});
-//			},
-//			mouseover:function(){$(this).css({'background':'#03b8cf','color':'white'});},
-//			mouseleave:function(){$(this).css({'background':'#fff','color':'#333'});}
-		});
-		/*遍历ID*/
-		funser();
-		function funser(){
-			var panel=document.getElementsByClassName('panel');
-			for (var i=0;i<panel.length;i++) {
-				panel[i].getElementsByTagName("div")[0].getElementsByTagName('a')[0].setAttribute('href','#heading'+i);
-				panel[i].getElementsByTagName("div")[1].setAttribute('id','heading'+i);
-			}
-		}
+        $('#treeMenu').on('click', 'a', function() {
+            $('#treeMenu li.active').removeClass('active');
+            $(this).closest('li').addClass('active');
+        });
 	</script>
 
 </html>

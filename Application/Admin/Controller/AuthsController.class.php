@@ -65,7 +65,7 @@ class AuthsController extends BaseController
             $datalog['admin_id'] = $id;
             $logdata = [
                 'admin_id' => $datalog['admin_id'],
-                $data['create_time'] => formateTime(),
+                'create_time' => formateTime(),
             ];
             self::makeLog($logdata, 'admin_operate_logs');
         }
@@ -108,7 +108,7 @@ class AuthsController extends BaseController
             $datalog['admin_id'] = session("admin_id");
             $logdata = [
                 'admin_id' => $datalog['admin_id'],
-                $data['update_time'] => formateTime(),
+                'update_time' => formateTime(),
             ];
             self::makeLog($logdata, 'admin_operate_logs');
         }
@@ -144,7 +144,7 @@ class AuthsController extends BaseController
             $datalog['admin_id'] = session("admin_id");
             $logdata = [
                 'admin_id' => $datalog['admin_id'],
-                $data['delete_time'] => formateTime(),
+                'delete_time' => formateTime(),
             ];
             self::makeLog($logdata, 'admin_operate_logs');
         }

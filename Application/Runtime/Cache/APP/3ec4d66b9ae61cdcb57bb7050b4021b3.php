@@ -4,12 +4,11 @@
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <title>扁鹊财院-领先的财务解决方案供应商；防控财务亚健康，安全创造新财富</title>
-    <meta name="title" content="扁鹊财院-领先的财务解决方案供应商。财务咨询，财税咨询，企业上市服务，企业并购服务。">
-    <meta name="Keywords" content="财务咨询、股权设计、税务筹划"/>
-    <meta name="description"
-          content="扁鹊财院以分享财务管理智慧为使命，致力于让企业财务更加安全、利用财务技术创造更多利润、让财务管理更规范。平台隶属于北京大财有道科技有限公司，为企业提供专业的财务培训、财税筹划咨询、高端财务人员猎头、企业资产管理等一站式服务，并为创业型资本运作企业提供财务整体解决方案。"/>
+    <?php if(is_array($result)): $i = 0; $__LIST__ = $result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><title><?php echo ($vo["title"]); ?></title>
 
+        <meta name="title" content="<?php echo ($vo["title"]); ?>">
+        <meta name="Keywords" content="<?php echo ($vo["keywords"]); ?>"/>
+        <meta name="description" content="<?php echo ($vo["description"]); ?>"/><?php endforeach; endif; else: echo "" ;endif; ?>
     <link rel="stylesheet" href="/Public/APP/css/new_file.css"/>
     <script>
         (function (designWidth, maxWidth) {
@@ -84,6 +83,7 @@
     </script>
 </head>
 <body>
+<link rel="stylesheet" href="/Public/APP/css/head.css"/>
 <header>
     <div class="contentCenter">
         <div class="imgLogo">
@@ -91,11 +91,11 @@
         </div>
         <ul class="headerTil">
             <li><a href="">首页</a></li>
-            <li><a href="">陪伴计划</a></li>
-            <li><a href="">财务课堂</a></li>
+            <li><a href="">财务课程</a></li>
+            <li><a href="">财务咨询</a></li>
             <li><a href="">扁鹊课堂</a></li>
             <li><a href="">专家团队</a></li>
-            <li><a href="">财税咨询</a></li>
+            <li><a href="">财税资讯</a></li>
         </ul>
     </div>
 </header>
@@ -105,7 +105,8 @@
 </div>
 <comment>
     <div class="banner">
-        <img src="/Public/APP/img/banne.jpg"/>
+        <!--<img src="/Public/APP/img/banne.jpg"/>-->
+        <img src="<?php echo ($bannerResult["url"]); ?>"/>
     </div>
     <div class="partOne">
         <div class="partTil">
@@ -176,67 +177,41 @@
         <div class="partTwoTex">
             <div class="contentCenter">
                 <table cellspacing="0" cellpadding="0">
-                    <thead>
-                    <th>
-                    <td>课程</td>
-                    <td>地点</td>
-                    <td>马上咨询</td>
-                    </th>
-                    </thead>
-                    <tbody>
                     <tr>
-                        <td style="width: 10%;" rowspan="2" class="rowSpan">4月
-                            <img src="/Public/APP/img/partTwoTabIcon.png"/>
-                        </td>
-                        <td style="width:20%;">重塑老板财务思维</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td style="width:10%;"><a href="">马上咨询</a></td>
+                        <div class="trHeadD trHeadD1">课程</div>
+                        <div class="trHeadD trHeadD2">地点</div>
+                        <div class="trHeadD trHeadD3">马上咨询</div>
                     </tr>
-                    <tr>
-                        <td style="width:20%;">财务通</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td style="width:10%;"><a href="">马上咨询</a></td>
-                    </tr>
-                    <tr>
-                        <td style="width:10%;" rowspan="2" class="rowSpan">5月
-                            <img src="/Public/APP/img/partTwoTabIcon.png"/>
-                        </td>
-                        <td style="width:20%;">财务系统班</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td style="width:10%;"><a href="">马上咨询</a></td>
-                    </tr>
-                    <tr>
-                        <td style="width:20%;">税务稽查与应对策略</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td style="width:10%;"><a href="">马上咨询</a></td>
-                    </tr>
-                    <tr>
-                        <td style="width:10%;" rowspan="2" class="rowSpan">6月
-                            <img src="/Public/APP/img/partTwoTabIcon.png"/>
-                        </td>
-                        <td style="width:20%;">财务通</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td width="10%"><a href="">马上咨询</a></td>
-                    </tr>
-                    <tr>
-                        <td style="width:20%;">财务通</td>
-                        <td style="width:60%;">
-                            <p>北京 成都 太原 深圳 义乌 青岛 杭州 广州 长沙 银川 天津 武汉 南京 重庆 徐州 大连 </p>
-                        </td>
-                        <td style="width:10%;"><a href="">马上咨询</a></td>
-                    </tr>
-                    </tbody>
+                    <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                            <td class="HWdouble">
+                                <span><?php echo ($key); ?>月</span>
+                                <img src="/Public/APP/img/partTwoTabIcon.png"/>
+                            </td>
+                            <?php if(is_array($vo)): $i = 0; $__LIST__ = array_slice($vo,0,1,true);if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$li): $mod = ($i % 2 );++$i;?><td class="Honly">
+                                    <div class="HonlyDiv">
+                                        <div class="HonlyDivB HonlyDivB1">
+                                            <?php echo ($li["coursename"]); ?>
+                                        </div>
+                                        <div class="HonlyDivB HonlyDivB2">
+                                            <p><?php echo ($li["address"]); ?></p>
+                                        </div>
+                                        <div class="HonlyDivB HonlyDivB3">
+                                            <a href="">马上咨询</a>
+                                        </div>
+                                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                            <?php if(is_array($vo)): $i = 0; $__LIST__ = array_slice($vo,1,1,true);if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$li): $mod = ($i % 2 );++$i;?><div class="HonlyDiv">
+                                    <div class="HonlyDivB HonlyDivB1"><?php echo ($li["coursename"]); ?></div>
+                                    <div class="HonlyDivB HonlyDivB2">
+                                        <p><?php echo ($li["address"]); ?></p>
+                                    </div>
+                                    <div class="HonlyDivB HonlyDivB3">
+                                        <a href="">马上咨询</a>
+                                    </div>
+                                </div>
+                                </td><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                 </table>
+
             </div>
         </div>
     </div>
@@ -343,22 +318,11 @@
         <div class="partFiveTe">
             <div class="contentCenter">
                 <div class="partFiveL">
-                    <img src="/Public/APP/img/partFiveLimg.png"/>
+                    <img src="<?php echo ($informationImgResult["url"]); ?>"/>
                 </div>
                 <div class="partFiveR">
                     <ul>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
-                        <li><a href="">完善财务系统，为企业创造财务利润</a></li>
+                        <?php if(is_array($informationResult)): $i = 0; $__LIST__ = $informationResult;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href=""><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
                     </ul>
                 </div>
             </div>
@@ -366,30 +330,33 @@
     </div>
 </comment>
 
+<link rel="stylesheet" href="/Public/APP/css/footer.css"/>
 <footer>
     <div class="contentCenter">
         <div class="footerTil">
             <p class="fontCop">Contect <span>Us</span></p>
             <p class="fontUnder">联系我们</p>
         </div>
-        <div class="footerTe">
-            <div class="footerL">
-                <div class="footerLB">
-                    <img src="/Public/APP/img/footerIcon1.png"/>
-                    <p>公司地址：北京市朝阳区国贸旺座中心东塔2716室</p>
-                </div>
-                <div class="footerLB">
-                    <img src="/Public/APP/img/footerIcon2.png"/>
-                    <p>客户服务：010-5945-8017</p>
-                </div>
-                <div class="footerLB">
-                    <img src="/Public/APP/img/footerIcon3.png"/>
-                    <p>版权所有：www.bianquecaiyuan.com</p>
-                </div>
+        <div class="footerTex">
+            <div class="footerLogo">
+                <img src="/Public/APP/img/footerlogo2.png" style="width: 180px;height: 75px;" />
             </div>
-            <div class="footerR">
-                <img src="/Public/APP/img/footerERWEIMA.png"/>
-                <p>扫码关注</p>
+            <div class="footerTexL">
+                <div class="footerTexLI footerTextex">
+                    <img src="/Public/APP/img/footerIconAddress.png" style="width: 20px;height: 30px;"/>
+                    <p>北京市朝阳区旺座中心东塔2716</p>
+                </div>
+                <p class="footerTextexP">版权所有：www.bianquecxy.com</p>
+            </div>
+            <div class="footerTexC">
+                <div class="footerTexCI footerTextex">
+                    <img src="/Public/APP/img/footerIconPhone.png" style="width: 25px;height: 30px;" />
+                    <p>咨询专线：010-5945-8017</p>
+                </div>
+                <p class="footerTextexPO">京ICP备16057406号-1</p>
+            </div>
+            <div class="footerTexR">
+                <img src="/Public/APP/img/footerIconEWM.png" style="width: 120px;height: 120px;"/>
             </div>
         </div>
     </div>
@@ -411,36 +378,58 @@
         $('.partTwofade').mouseleave(function () {
             $('.partTwofade').fadeOut(600)
         })
-        /*表格*/
         $('table td p').addClass('tdP');
 
         function removeC(e) {
             e.css({
-                "height": '1rem',
-                'line-height': '0.5rem',
+                "height": '108PX',
+                'line-height': '108PX',
+            })
+        }
+
+        function removeCH(e) {
+            e.css({
+                "height": '108PX',
+                'line-height': '54PX',
             }).removeClass('tdP');
         }
 
         function addC(e) {
             e.css({
-                "height": '0.54rem',
+                "height": '54PX',
             }).addClass('tdP');
         }
 
-        $('.rowSpan').click(function () {
-            var that = $(this).parent('tr').find('td p');
-            var thatr = $(this).parent('tr').next().find('td p');
-            if (that.hasClass('tdP') || thatr.hasClass('tdP')) {
+        function addCO(e) {
+            e.css({
+                "height": '54PX',
+                'line-height': '54PX'
+            })
+        }
+
+        $('.HWdouble').click(function () {
+
+            var that = $(this).siblings('.Honly').find('.HonlyDiv');
+            var thats = $(this).siblings('.Honly').find('.HonlyDivB');
+            var thatH = $(this).siblings('.Honly').find('.HonlyDivB>p')
+            var thatO = $(this).find('img');
+            var thatOC = $(this).siblings('.Honly').find('.HonlyDivB>a');
+            if (thatH.hasClass('tdP')) {
+                $(this).parent('tr').css({'height': '216px'});
                 removeC(that);
-                removeC(thatr);
+                removeC(thats);
+                removeCH(thatH);
+                thatO.css({'bottom': '-68px', 'right': '-56px'});
+                thatOC.css({'margin': '36px auto'});
             } else {
-                addC(that);
-                addC(thatr);
+                $(this).parent('tr').css({'height': '108px'});
+                addCO(that);
+                addCO(thats);
+                addC(thatH);
+                thatO.css({'bottom': '-14px', 'right': '-56px'});
+                thatOC.css({'margin': '12px auto'});
             }
-
         })
-
-
     })
 </script>
 </html>
